@@ -1,8 +1,10 @@
+// 추가할 물 섭취량을 선택하는 세로형 선택 뷰
 import SwiftUI
 
 struct AmountPicker: View {
     @Binding var selected: Int
-    var options: [Int] = [100,150,200,250,300]
+    // 표시할 옵션 목록
+    var options: [Int] = [100,150,200,250,300,350,400,450,500]
 
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
