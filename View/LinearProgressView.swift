@@ -1,6 +1,8 @@
+// 진행률 바
 import SwiftUI
 
 struct LinearProgressView: View {
+    // 진행률 (0.0~1.0)
     var progress: Double
     var height: CGFloat = 10
 
