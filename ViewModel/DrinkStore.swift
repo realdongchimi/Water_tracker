@@ -1,3 +1,4 @@
+// 메인 상태 기록 관리역할
 import SwiftUI
 import Combine
 
