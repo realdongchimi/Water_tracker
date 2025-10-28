@@ -1,5 +1,6 @@
 import Foundation
 
+// 하루 단위 기록
 struct DayRecord: Identifiable, Codable, Equatable {
     var id: String { dateKey }      // "YYYY-MM-DD"
     let dateKey: String    // 시간 지정하기 위한 날짜키
