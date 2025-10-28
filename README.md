@@ -20,3 +20,30 @@
 - Xcode 15.0+
 - iOS 17.0+
 - iPhone 13 / 14 / 15
+
+### Swift 프로젝트 구조
+```
+WaterTrackerApp/
+┣ App/
+│ ┗ WaterTrackerApp.swift   // 앱 진입점 (@main)
+│
+┣ Model/
+│ ┣ DrinkEntry.swift   // 한 번의 섭취 기록 (시간, 양)
+│ ┗ DayRecord.swift   // 하루 전체 기록(총합, 리스트)
+│
+┣ ViewModel/
+│ ┗ DrinkStore.swift   // 메인 상태 관리자 (ObservableObject)
+│
+┣ View/
+│ ┣ MainView.swift   // 전체 화면 구성 (메인 UI)
+│ ┣ HeaderView.swift   // 상단 타이틀 + 설정 버튼
+│ ┣ PercentBlock.swift   // 퍼센트 표시
+│ ┣ LinearProgressView.swift   // 진행률 바
+│ ┣ TodayBlock.swift   // 오늘 총량 및 목표 수정
+│ ┣ AmountPicker.swift   // 섭취량 선택 스크롤
+│ ┣ DrinkButton.swift   // 섭취량 추가 버튼
+│ ┣ IntakeRowCard.swift   // 한 줄 카드 (기록 표시)
+│ ┗ IntakeList.swift   // 시간별 기록 리스트
+│ ┗ SettingSheet.swift   // 하단 설정 팝업 (자동/수동 초기화)
+│
+┗ README.md   // 프로젝트 문서
