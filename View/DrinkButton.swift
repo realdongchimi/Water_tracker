@@ -1,6 +1,8 @@
+// 버튼 클릭시 선택된 양을 추가
 import SwiftUI
 
 struct DrinkButton: View {
+    // 한 번에 추가할 섭취량
     var amount: Int
     var onAdd: (Int) -> Void
 
