@@ -1,3 +1,4 @@
+// 설정 모달창
 import SwiftUI
 
 struct SettingSheet: View {
@@ -5,20 +6,25 @@ struct SettingSheet: View {
     @State private var showAlert = false
     @State private var resetTime: Date = {
         var c = DateComponents()
-        c.hour = UserDefaults.standard.integer(forKey: "resetHour")
+        c.hour = UserDefaults.standard.integer(forKey: "resetHour")    // 존재하지 않으면 0
         c.minute = UserDefaults.standard.integer(forKey: "resetMinute")
+        // 오늘 날짜의 같은 시,분으로  Date 생성
         return Calendar.current.date(from: c) ?? DateComponents(calendar: .current, hour: 0, minute: 0).date!
     }()
 
     var body: some View {
         NavigationStack {
             Form {
+                // 일일 자동 초기화 설정
                 Section("일일 초기화") {
+                    // 자동 초기화 사용/미사용 토글
                     Toggle("자동 초기화 사용", isOn: $store.autoResetEnabled)
+                    // 초기화 시각 선택 (시/분)
                     DatePicker("초기화 시각",
                                selection: $resetTime,
                                displayedComponents: .hourAndMinute)
                     .onChange(of: resetTime) { _, d in
+                        // 사용자ㅐ가 시/분을 바꾸면 Store에 반영
                         store.updateResetTime(to: d)
                     }
 
@@ -28,6 +34,7 @@ struct SettingSheet: View {
                         .padding(.top, 2)
                 }
 
+                // 수동 초기화
                 Section {
                     Button(role: .destructive) {
                         showAlert = true
@@ -44,6 +51,7 @@ struct SettingSheet: View {
                     Button("닫기") { dismiss() }
                 }
             }
+            // 삭제 동작 확인 알림
             .alert("오늘 기록을 초기화할까요?", isPresented: $showAlert) {
                 Button("취소", role: .cancel) {}
                 Button("초기화", role: .destructive) { store.resetToday() }
